@@ -1,0 +1,119 @@
+.dialogs {
+    display: flex;
+
+
+}
+
+.dialogs_items {
+    background-color: #f5b64d;
+    font-size: 20px;
+
+    padding-top: 10px;
+    height: 80vh;
+}
+
+.item {
+    padding: 5px 15px 5px 15px;
+
+}
+
+.item a {
+    color: white;
+    text-decoration: none;
+}
+
+.active_item {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.item:hover {
+    color: rgba(0, 0, 0, 0.82);
+}
+
+
+.messages {
+    width: 100%;
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.message {
+    max-width: 300px;
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    border-radius: 15px;
+    z-index: 2;
+
+}
+
+.message_display {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    z-index: 2;
+    padding: 10px;
+
+}
+
+.message_display:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("./../../assets/background_smile.png");
+    opacity: 0.1;
+    z-index: 1;
+}
+
+.my_message {
+    align-self: flex-end;
+    background-color: #ffd286;
+}
+
+.other_message {
+    align-self: flex-start;
+    background-color: #d8d1de;
+}
+
+.write_message {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.write_message_area {
+    border: 2px solid #ff8800;
+    margin: 0 10px 0 0;
+    border-radius: 15px;
+    width: 100%;
+    padding: 15px;
+    resize: none;
+    color: #060060;
+}
+
+.write_message_area::placeholder {
+    color: #895daf;
+}
+
+.send {
+    height: 80%;
+    width: 100px;
+    border-radius: 15px;
+    border: 2px solid #895daf;
+    font-weight: bolder;
+    color: #895daf;
+    background-color: white;
+    text-transform: uppercase;
+}
+
+.send:hover {
+    background-color: #895daf;
+    color: white;
+}

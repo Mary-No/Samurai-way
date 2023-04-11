@@ -1,0 +1,43 @@
+
+.descriptName {
+    font-size: 18px;
+    font-weight: 600;
+
+}
+
+.post {
+    display: flex;
+    position: relative;
+    margin-top: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(137, 93, 175, 0.58);
+    width: 80%;
+    padding: 10px;
+}
+
+.post_content {
+    margin-left: 15px;
+    width: 80%;
+}
+
+.post_date {
+    color: #abaaaf;
+    font-size: 14px;
+}
+
+.like {
+    display: flex;
+    position: absolute;
+    bottom: 5%;
+    right: 2%;
+
+}
+
+.like_iconImg {
+    width: 25px;
+    height: 25px;
+}
+
+.like_icon {
+    margin-right: 10px;
+}

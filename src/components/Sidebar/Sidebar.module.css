@@ -1,0 +1,26 @@
+.sidebar {
+    grid-area: s;
+    background-color: rgb(123, 120, 172);
+    text-transform: uppercase;
+    padding-top: 10px;
+
+}
+
+.sidebar div {
+    padding: 5px 15px 5px 15px;
+}
+
+.section_active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.link {
+    color: aliceblue;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: #ffd286;
+}
