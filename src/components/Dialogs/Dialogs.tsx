@@ -1,42 +1,32 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import s from './Dialogs.module.css'
-import {NavLink} from 'react-router-dom';
+import DialogItem from './DialogItem/DialogItem';
+import Message from './Message/Message';
+import {actionType, dialogsPageType} from '../../redux/state';
+import {sendMessageCreator, updateNewMessageTextCreator} from '../../redux/dialogs-reducer';
 
-type DialogItemType = {
-    name: string
-    id: string
-}
-type MessageType = {
-    message: string
-}
-const DialogItem = (props: DialogItemType) => {
-    return (
-        <div className={`${s.item}  ${s.active_item}`}>
-            <NavLink to={'/dialogs/' + props.id}>{props.name}</NavLink>
-        </div>
-    )
-}
-const Message = (props: MessageType) => {
-    return (<div className={`${s.my_message}  ${s.message}`}>{props.message}</div>)
 
+type DialogsPropsType = {
+    dialogsPageState: dialogsPageType,
+    dispatch: (action: actionType) => void
 
 }
 
-const Dialogs = () => {
-    let dialogsData = [
-        {name: 'Dima', id: '1'},
-        {name: 'Alex', id: '2'},
-        {name: 'Svetlana', id: '3'},
-        {name: 'Kate', id: '4'}
-    ]
-    let messagesData = [
-        {message: 'Hi', id: '1'},
-        {message: 'how are you?', id: '2'},
-        {message: 'what do you do?', id: '3'},
-        {message: 'what\'s new?', id: '4'}
-    ]
-    let dialogNameElement = dialogsData.map(d => <DialogItem name={d.name} id={d.id}/>);
-    let messageElement = messagesData.map(m => <Message message={m.message}/>);
+const Dialogs = (props: DialogsPropsType) => {
+
+    let dialogNameElement = props.dialogsPageState.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>);
+    let messageElement = props.dialogsPageState.messages.map(m => <Message message={m.message}/>);
+    let newMessageText = props.dialogsPageState.newMessageText;
+
+    let onSendMessageClick = () => {
+        props.dispatch(sendMessageCreator())
+    }
+
+    let onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        let newText = e.target.value;
+        props.dispatch(updateNewMessageTextCreator(newText))
+    }
+
     return (
 
         <div className={s.dialogs}>
@@ -49,10 +39,13 @@ const Dialogs = () => {
                     <div className={`${s.other_message}  ${s.message}`}>hi! i'm fine</div>
                 </div>
                 <form className={s.write_message}>
-                    <textarea className={s.write_message_area} rows={1} cols={12}
-                              placeholder="write a message"></textarea>
+                    <textarea className={s.write_message_area}
+                              onChange={onNewMessageChange}
+                              value={newMessageText}
+                              rows={1} cols={12}
+                              placeholder="Write your message"></textarea>
 
-                    <input className={s.send} type="submit" value="Send"></input>
+                    <input className={s.send} type="button" onClick={onSendMessageClick} value="Send"></input>
                 </form>
 
             </div>

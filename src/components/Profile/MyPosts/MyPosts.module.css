@@ -32,7 +32,7 @@
     width: 80%;
 }
 
-.postForm input {
+.postForm button {
     width: 100px;
     height: 30px;
     align-self: flex-end;
@@ -45,7 +45,7 @@
 
 }
 
-.postForm input:hover {
+.postForm button:hover {
     background-color: #ff8800;
 }
 

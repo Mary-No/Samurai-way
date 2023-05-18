@@ -1,23 +1,47 @@
-import React from 'react';
+import {useRef} from 'react';
 import s from './MyPosts.module.css';
-import Post from '../Post/Post';
+import Post from './Post/Post';
+import {actionType, PostDataType} from '../../../redux/state';
+import {addPostActionCreator, updateNewPostTextActionCreator} from '../../../redux/profile-reducer';
 
 
-const MyPosts = () => {
-    let PostData = [
-        {id: 1, message: 'Hi, how are you?', date: '30 sep 2020', likeCount: 5},
-        {id: 2, message: 'It\'s my first post', date: '12 jun 2018', likeCount: 20}]
+type MyPostsPropsType = {
+    postData: PostDataType[],
+    dispatch: (action: actionType) => void
+    newPostText: string
+}
 
-    let postElement = PostData.map(p => <Post message={p.message} date={p.date} likeCount={p.likeCount}/>)
+const MyPosts = (props: MyPostsPropsType) => {
+
+    let postElement = props.postData.map(p => <Post message={p.message} date={p.date} likeCount={p.likeCount}/>)
+
+    let newPostElement = useRef<HTMLTextAreaElement>(null)
+
+    let addPost = () => {
+        if (newPostElement.current !== null) {
+            props.dispatch(addPostActionCreator())
+        }
+
+    }
+    let onPostChange = () => {
+        if (newPostElement.current !== null) {
+            let text = newPostElement.current.value
+            let action = updateNewPostTextActionCreator(text);
+            props.dispatch(action)
+        }
+    }
     return (
         <div className={s.posts}>
             <div className={s.writePost}>
                 <h2>My posts</h2>
-                <form className={s.postForm}>
-                    <textarea rows={3} cols={30} placeholder="your news"></textarea>
+                <div className={s.postForm}>
+                    <textarea ref={newPostElement}
+                              onChange={onPostChange}
+                              value={props.newPostText} rows={3} cols={30}
+                              placeholder="your news"></textarea>
 
-                    <input type="submit" value="Send"></input>
-                </form>
+                    <button onClick={addPost}>Send</button>
+                </div>
             </div>
             {postElement}
 

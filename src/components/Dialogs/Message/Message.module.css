@@ -1,0 +1,14 @@
+
+.message {
+    max-width: 300px;
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    border-radius: 15px;
+    z-index: 2;
+
+}
+
+.my_message {
+    align-self: flex-end;
+    background-color: #ffd286;
+}

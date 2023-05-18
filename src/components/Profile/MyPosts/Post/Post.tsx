@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import s from './Post.module.css';
-import Avatar from '../Avatar/Avatar';
-import like from '../../../assets/heart.png'
-// import likeSelected from '../../../assets/heartClick.png'
+import Avatar from '../../Avatar/Avatar';
+import like from '../../../../assets/heart.png'
 
 
 type PostType = {
@@ -15,7 +14,6 @@ const Post = (props: PostType) => {
     let flag = false;
     let [likes, incrementCount] = useState(props.likeCount)
 
-    // const [like_icon, changeIcon] = useState(like)
     function clickLike() {
         incrementCount((actual) => actual + 1)
     }
