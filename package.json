@@ -2,9 +2,8 @@
   "name": "samurai-way",
   "version": "0.1.0",
   "private": true,
-  "homepage": "",
+  "homepage": "https://Mary-No.github.io/Samurai-way",
   "dependencies": {
-    "homepage": "https://Mary-No.github.io/Samurai-way",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "12.0.0",
     "@testing-library/user-event": "13.2.1",

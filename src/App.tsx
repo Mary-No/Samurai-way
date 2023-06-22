@@ -5,12 +5,10 @@ import Sidebar from './components/Sidebar/Sidebar';
 import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
 import {BrowserRouter, Route} from 'react-router-dom';
-import {actionType, stateDataType} from './redux/state';
+import {storeType} from './redux/store';
 
 type AppPropsType = {
-    state: stateDataType
-    dispatch: (action: actionType) => void
-
+    store: storeType
 }
 
 function App(props: AppPropsType) {
@@ -21,8 +19,7 @@ function App(props: AppPropsType) {
                 <Sidebar/>
                 <div className="app-wrapper-content">
                     <Route path="/profile"
-                           render={() => <Profile profilePageState={props.state.profilePage}
-                                                  dispatch={props.dispatch}
+                           render={() => <Profile store={props.store}
                            />}/>
                     <Route path="/dialogs"
                            render={() => <Dialogs dialogsPageState={props.state.dialogsPage}

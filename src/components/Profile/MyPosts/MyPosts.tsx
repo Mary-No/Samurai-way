@@ -1,8 +1,7 @@
 import {useRef} from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import {actionType, PostDataType} from '../../../redux/state';
-import {addPostActionCreator, updateNewPostTextActionCreator} from '../../../redux/profile-reducer';
+import {actionType, PostDataType} from '../../../redux/store';
 
 
 type MyPostsPropsType = {
@@ -17,17 +16,19 @@ const MyPosts = (props: MyPostsPropsType) => {
 
     let newPostElement = useRef<HTMLTextAreaElement>(null)
 
-    let addPost = () => {
-        if (newPostElement.current !== null) {
-            props.dispatch(addPostActionCreator())
-        }
+    let onAddPost = () => {
+        props.addPost();
+        // if (newPostElement.current !== null) {
+        //     props.dispatch(addPostActionCreator())
+        // }
 
     }
     let onPostChange = () => {
         if (newPostElement.current !== null) {
             let text = newPostElement.current.value
-            let action = updateNewPostTextActionCreator(text);
-            props.dispatch(action)
+            props.updateNewPostText(text)
+            // let action = updateNewPostTextActionCreator(text);
+            // props.dispatch(action)
         }
     }
     return (
@@ -40,7 +41,7 @@ const MyPosts = (props: MyPostsPropsType) => {
                               value={props.newPostText} rows={3} cols={30}
                               placeholder="your news"></textarea>
 
-                    <button onClick={addPost}>Send</button>
+                    <button onClick={onAddPost}>Send</button>
                 </div>
             </div>
             {postElement}
