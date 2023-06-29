@@ -8,4 +8,7 @@ let reducers = combineReducers({
 })
 
 let store = createStore(reducers);
+
+export type StoreAppType = typeof store
+
 export default store
