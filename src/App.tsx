@@ -3,18 +3,11 @@ import './style/App.css';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import Profile from './components/Profile/Profile';
-import Dialogs from './components/Dialogs/Dialogs';
 import {BrowserRouter, Route} from 'react-router-dom';
-import {actionType, stateDataType} from './redux/store';
-import {StoreAppType} from "./redux/redux-store";
+import DialogsContainer from "./components/Dialogs/Message/DialogsContainer";
 
-type AppPropsType = {
-    store: StoreAppType
-    state: stateDataType
-    dispatch: (action: actionType) => void
-}
 
-function App(props: AppPropsType) {
+function App() {
     return (
         <BrowserRouter>
             <div className="app-wrapper">
@@ -22,9 +15,9 @@ function App(props: AppPropsType) {
                 <Sidebar/>
                 <div className="app-wrapper-content">
                     <Route path="/profile"
-                           render={() => <Profile store={props.store} />}/>
+                           render={() => <Profile />}/>
                     <Route path="/dialogs"
-                           render={() => <Dialogs store={props.store} dispatch={props.dispatch}/>}/>
+                           render={() => <DialogsContainer />}/>
 
 
                 </div>
