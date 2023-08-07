@@ -4,10 +4,13 @@ import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import Profile from './components/Profile/Profile';
 import {BrowserRouter, Route} from 'react-router-dom';
-import DialogsContainer from "./components/Dialogs/Message/DialogsContainer";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import {StoreAppType} from "./redux/redux-store";
 
-
-function App() {
+type AppPropsType = {
+    store: StoreAppType
+}
+function App(props: AppPropsType) {
     return (
         <BrowserRouter>
             <div className="app-wrapper">
@@ -15,9 +18,9 @@ function App() {
                 <Sidebar/>
                 <div className="app-wrapper-content">
                     <Route path="/profile"
-                           render={() => <Profile />}/>
+                           render={() => <Profile store={props.store}/>}/>
                     <Route path="/dialogs"
-                           render={() => <DialogsContainer />}/>
+                           render={() => <DialogsContainer store={props.store} />}/>
 
 
                 </div>
