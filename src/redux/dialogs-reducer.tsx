@@ -3,6 +3,7 @@ import {actionType, dialogsPageType} from './store';
 
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 const SEND_MESSAGE = 'SEND-MESSAGE';
+
 let initialState = {
     dialogs: [
         {name: 'Dima', id: 1},
@@ -21,22 +22,26 @@ let initialState = {
 }
 const dialogsReducer = (state: dialogsPageType = initialState, action: actionType) => {
     switch (action.type) {
-        case UPDATE_NEW_MESSAGE_TEXT:
+        case UPDATE_NEW_MESSAGE_TEXT: {
+            let copyState = {...state}
             if (action.newTextMessage) {
-                state.newMessageText = action.newTextMessage;
+                copyState.newMessageText = action.newTextMessage;
             }
-            return state;
-        case SEND_MESSAGE:
+            return copyState;
+        }
+        case SEND_MESSAGE: {
+            let copyState = {...state}
             let newMessage = {
-                message: state.newMessageText,
+                message: copyState.newMessageText,
                 id: 123
             }
-            state.messages = [...state.messages, newMessage];
-            state.newMessageText = '';
-            return state;
+            copyState.messages = [...copyState.messages, newMessage];
+            copyState.newMessageText = '';
+            return copyState;
+        }
         default:             //если ни одно условие не проходит
             return state;
-    }
+        }
 }
 export const sendMessageCreator = () => ({type: SEND_MESSAGE})
 export const updateNewMessageTextCreator = (text: string) => ({

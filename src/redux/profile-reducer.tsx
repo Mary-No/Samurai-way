@@ -1,4 +1,4 @@
-// import React from 'react';
+import React from 'react';
 import {actionType, profilePageType} from './store';
 
 const ADD_POST = 'ADD-POST';
@@ -13,7 +13,7 @@ let initialState = {
 const profileReducer = (state: profilePageType = initialState, action: actionType) => {
 
     switch (action.type) {
-        case ADD_POST:
+        case ADD_POST: {
             let date = new Date();
             let newPost = {
                 id: 5,
@@ -21,14 +21,19 @@ const profileReducer = (state: profilePageType = initialState, action: actionTyp
                 date: date.toLocaleDateString(),
                 likeCount: 0
             }
-            state.posts = [newPost, ...state.posts];
-            state.newPostText = '';
-            return state;
-        case UPDATE_NEW_POST_TEXT:
+            let copyState = {...state};
+            copyState.posts = [...state.posts]
+            copyState.posts.push(newPost)
+            copyState.newPostText = '';
+            return copyState;
+        }
+        case UPDATE_NEW_POST_TEXT: {
+            let copyState = {...state};
             if (action.newText) {
-                state.newPostText = action.newText;
+                copyState.newPostText = action.newText;
             }
-            return state;
+            return copyState;
+        }
         default:             //если ни одно условие не проходит
             return state;
     }
