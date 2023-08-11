@@ -6,8 +6,8 @@ import {dialogsPageType} from '../../redux/store';
 
 
 type DialogsPropsType = {
-    updateNewMessageBody:(body:string) => void
-    sendMessage:() => void
+    updateNewMessageBody: (body: string) => void
+    sendMessage: () => void
     dialogsPage: dialogsPageType
 
 }
@@ -16,8 +16,8 @@ const Dialogs = (props: DialogsPropsType) => {
 
     let state = props.dialogsPage
 
-    let dialogNameElement =state.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>);
-    let messageElement = state.messages.map(m => <Message message={m.message}/>);
+    let dialogNameElement = state.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id}/>);
+    let messageElement = state.messages.map(m => <Message key={m.id} message={m.message}/>);
     let newMessageText = state.newMessageText;
 
     let onNewMessageChange = (body: ChangeEvent<HTMLTextAreaElement>) => {

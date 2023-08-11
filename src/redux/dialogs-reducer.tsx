@@ -23,25 +23,26 @@ let initialState = {
 const dialogsReducer = (state: dialogsPageType = initialState, action: actionType) => {
     switch (action.type) {
         case UPDATE_NEW_MESSAGE_TEXT: {
-            let copyState = {...state}
             if (action.newTextMessage) {
-                copyState.newMessageText = action.newTextMessage;
+                return {
+                    ...state,
+                    newMessageText: action.newTextMessage
+                }
             }
-            return copyState;
+            return state;
         }
         case SEND_MESSAGE: {
-            let copyState = {...state}
-            let newMessage = {
-                message: copyState.newMessageText,
-                id: 123
+            let body = state.newMessageText;
+            return {
+                ...state,
+                newMessageText: '',
+                messages: [...state.messages,
+                    {message: body, id: 123}]
             }
-            copyState.messages = [...copyState.messages, newMessage];
-            copyState.newMessageText = '';
-            return copyState;
         }
         default:             //если ни одно условие не проходит
             return state;
-        }
+    }
 }
 export const sendMessageCreator = () => ({type: SEND_MESSAGE})
 export const updateNewMessageTextCreator = (text: string) => ({
