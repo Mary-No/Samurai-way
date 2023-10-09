@@ -19,14 +19,26 @@ export type profilePageType = {
     posts: PostDataType[]
     newPostText: string
 }
+
 export type dialogsPageType = {
     dialogs: dialogsDataType[],
     messages: messagesDataType[],
     newMessageText: string
 }
+export type usersPageType = { users: userType[]}
+export type userType = {
+    id: string,
+    name: string,
+    lastname: string,
+    date: string,
+    location: { country: string, city: string },
+    followed: boolean,
+    avatar: string
+}
 export type stateDataType = {
     profilePage: profilePageType,
-    dialogsPage: dialogsPageType
+    dialogsPage: dialogsPageType,
+    usersPage: usersPageType
 }
 export type storeType = {
     _state: stateDataType,
@@ -40,7 +52,9 @@ export type storeType = {
 export type actionType = {
     type: string,
     newText?: string,
-    newTextMessage?: string
+    newTextMessage?: string,
+    userId?: string,
+    users?: usersPageType
 }
 
 
@@ -69,6 +83,19 @@ let store = {
             ],
             newMessageText: ''
         },
+        usersPage: {
+            users: [
+                {
+                    id: "1",
+                    name: 'Andrey',
+                    lastname: 'Kovalski',
+                    date: '30.08.2002',
+                    location: {country: "Russia", city: 'Moscow'},
+                    followed: false,
+                    avatar: "https://www.tu-ilmenau.de/unionline/fileadmin/_processed_/0/0/csm_Person_Yury_Prof_Foto_AnLI_Footgrafie__2_.JPG_94f12fbf25.jpg"
+                }
+        ]
+        }
 
 
     },

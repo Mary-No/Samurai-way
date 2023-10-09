@@ -1,0 +1,95 @@
+.users{
+    padding: 0px 30px;
+    width: 80%;
+}
+.avatar img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.avatar{
+    margin-right: 40px;
+}
+.user{
+    padding: 20px;
+    border-bottom: 1px solid rgba(137, 93, 175, 0.4);
+    display: flex;
+    justify-content: space-between;
+
+
+}
+.user_info{
+    display: flex;
+}
+.fullname{
+    font-size: 16px;
+    font-weight: 600;
+}
+.text > div{
+    margin-bottom: 5px;
+}
+.btnFollow{
+    width: 120px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    color: white;
+}
+.btn:hover{
+    cursor: pointer;
+}
+.followed{
+    background-color: #f5b64d;
+}
+.followed:hover{
+    background-color: #ff8800;
+}
+.unfollowed{
+    background-color: rgb(123, 120, 172);
+}
+.unfollowed:hover{
+    background-color: #895daf;
+}
+.searchForm{
+    display: flex;
+    padding-right: 20px;
+    padding-bottom: 30px;
+}
+.entryField{
+    width: 100%;
+    margin-right: 40px;
+    border-radius: 5px;
+    border: 1.6px solid rgba(123, 120, 172, 0.67);
+    padding-left: 20px;
+}
+.entryField::placeholder{
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    color: rgba(123, 120, 172, 0.67);
+}
+.entryField:focus{
+    outline: none;
+    border: 1.6px solid #895daf;
+}
+.submitBtn{
+    height: 40px;
+    width: 90px;
+    border-radius: 15px;
+    border: 1.6px solid rgb(123, 120, 172);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    color: rgb(123, 120, 172);
+    background-color: white;
+
+}
+.submitBtn:hover{
+    background-color: #895daf;
+    color: white;
+    border-color: #895daf;
+}

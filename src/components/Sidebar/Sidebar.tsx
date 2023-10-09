@@ -20,6 +20,9 @@ const Sidebar = () => {
             <div className={s.section}>
                 <NavLink to="/#" className={s.link}>Settings</NavLink>
             </div>
+            <div className={s.section}>
+                <NavLink to="/#" className={s.link}>Find user</NavLink>
+            </div>
         </nav>
     )
 }
