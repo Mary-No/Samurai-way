@@ -7,17 +7,16 @@ import {PropsUserType} from "./UsersContainer";
 
 class Users extends Component<PropsUserType> {
 
-    getUsers = () => {
-        if (this.props.items.length === 0) {
-            axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-                this.props.setUsers(response.data.items)
-            })
-        }
+    constructor(props: PropsUserType) {
+        super(props);
+        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+            this.props.setUsers(response.data.items)
+        })
     }
+
 
     render() {
         return <div className={s.users}>
-            <button onClick={this.getUsers}>Get Users</button>
             <form className={s.searchForm}>
                 <input className={s.entryField} type="text" id="name" placeholder="Search"></input>
                 <input className={s.submitBtn} type="submit" value="Find"></input>

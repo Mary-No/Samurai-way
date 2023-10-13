@@ -21,7 +21,7 @@ const Sidebar = () => {
                 <NavLink to="/#" className={s.link}>Settings</NavLink>
             </div>
             <div className={s.section}>
-                <NavLink to="/#" className={s.link}>Find user</NavLink>
+                <NavLink to="/users" className={s.link}>Find user</NavLink>
             </div>
         </nav>
     )
