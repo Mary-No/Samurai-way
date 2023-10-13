@@ -19,7 +19,7 @@ function App() {
                     <Route path="/dialogs"
                            render={() => <DialogsContainer/>}/>
                     <Route path="/users"
-                           render={() => <UsersContainer/>}/>
+                           render={() => <UsersContainer />}/>
 
 
                 </div>

@@ -17,14 +17,20 @@
     display: flex;
     justify-content: space-between;
 
-
 }
 .user_info{
     display: flex;
 }
-.fullname{
+.name{
     font-size: 16px;
     font-weight: 600;
+}
+.status{
+    max-width: 80%;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(137, 93, 175, 0.5);
+    padding: 25px 0;
 }
 .text > div{
     margin-bottom: 5px;

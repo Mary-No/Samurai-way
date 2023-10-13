@@ -1,27 +1,43 @@
-import React from 'react';
 import Users from "./Users";
 import {connect} from "react-redux";
-import {stateDataType, usersPageType, userType} from "../../redux/store";
+import {userType} from "../../redux/store";
 import {followAC, setUsersAC, unfollowAC} from "../../redux/users-reducer";
+import {AppStateType} from "../../redux/redux-store";
+import {compose, Dispatch} from "redux";
+import {FC} from "react";
 
-let mapStateToProps = (state: stateDataType) => {
+
+type MapStateType = {
+    items: userType[]
+}
+
+type MapDispatchType = {
+    follow: (userId: number) => void,
+    unfollow: (userId: number) => void,
+    setUsers: (items: userType[]) => void
+}
+
+export type PropsUserType = MapStateType & MapDispatchType
+
+let mapStateToProps = (state: AppStateType) => {
     return {
-        users: state.usersPage
+        items: state.usersPage.items
     }
 }
-let mapDispatchToProps = (dispatch: any) => {
+let mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        follow: (userId: string) => {
+        follow: (userId: number) => {
             dispatch(followAC(userId));
         },
-        unfollow: (userId: string) => {
+        unfollow: (userId: number) => {
             dispatch(unfollowAC(userId));
         },
-        setUsers: (users: usersPageType) => {
-            dispatch(setUsersAC(users))
+        setUsers: (items: userType[]) => {
+            dispatch(setUsersAC(items))
         }
     }
 
 
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Users);
+
+export default compose<FC>(connect<MapStateType, MapDispatchType, {}, AppStateType>(mapStateToProps, mapDispatchToProps))(Users);

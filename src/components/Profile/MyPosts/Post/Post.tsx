@@ -11,7 +11,6 @@ type PostType = {
 
 }
 const Post = (props: PostType) => {
-    let flag = false;
     let [likes, incrementCount] = useState(props.likeCount)
 
     function clickLike() {

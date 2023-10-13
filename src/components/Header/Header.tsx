@@ -6,6 +6,7 @@ const Header = () => {
         <header className={s.header}>
             <img
                 className={s.logo}
+                alt="logo"
                 src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Android_O_Preview_Logo.png"
             />
             <h1>DAROV</h1>

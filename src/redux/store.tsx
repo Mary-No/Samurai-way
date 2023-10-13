@@ -25,36 +25,37 @@ export type dialogsPageType = {
     messages: messagesDataType[],
     newMessageText: string
 }
-export type usersPageType = { users: userType[]}
+export type usersPageType = { items: userType[] }
 export type userType = {
-    id: string,
     name: string,
-    lastname: string,
-    date: string,
-    location: { country: string, city: string },
-    followed: boolean,
-    avatar: string
+    id: number,
+    photos: {
+        small: string,
+        large: string
+    },
+    status: string | null,
+    followed: boolean
 }
 export type stateDataType = {
     profilePage: profilePageType,
     dialogsPage: dialogsPageType,
     usersPage: usersPageType
 }
-export type storeType = {
-    _state: stateDataType,
-    _callSubscriber: (state: stateDataType) => void,
-    getState: () => void,
-    rerenderEntireTree: () => void,
-    dispatch: (action?: actionType) => void,
-    subscribe: (observer: any) => void,
-
-}
+// export type storeType = {
+//     _state: stateDataType,
+//     _callSubscriber: (state: stateDataType) => void,
+//     getState: () => void,
+//     rerenderEntireTree: () => void,
+//     dispatch: (action?: actionType) => void,
+//     subscribe: (observer: any) => void,
+//
+// }
 export type actionType = {
     type: string,
     newText?: string,
     newTextMessage?: string,
-    userId?: string,
-    users?: usersPageType
+    userId?: number,
+    items?: userType[]
 }
 
 
@@ -84,20 +85,29 @@ let store = {
             newMessageText: ''
         },
         usersPage: {
-            users: [
+            items: [
                 {
-                    id: "1",
-                    name: 'Andrey',
-                    lastname: 'Kovalski',
-                    date: '30.08.2002',
-                    location: {country: "Russia", city: 'Moscow'},
-                    followed: false,
-                    avatar: "https://www.tu-ilmenau.de/unionline/fileadmin/_processed_/0/0/csm_Person_Yury_Prof_Foto_AnLI_Footgrafie__2_.JPG_94f12fbf25.jpg"
+                    name: "Shubert",
+                    id: 1,
+                    photos: {
+                        small: "https://www.tu-ilmenau.de/unionline/fileadmin/_processed_/0/0/csm_Person_Yury_Prof_Foto_AnLI_Footgrafie__2_.JPG_94f12fbf25.jpg",
+                        large: "https://www.tu-ilmenau.de/unionline/fileadmin/_processed_/0/0/csm_Person_Yury_Prof_Foto_AnLI_Footgrafie__2_.JPG_94f12fbf25.jpg"
+                    },
+                    status: "Hi! i am React JS Junior developer and I am looking for a job",
+                    followed: false
+                },
+                {
+                    name: "Hacker",
+                    id: 2,
+                    photos: {
+                        small: "https://www.tu-ilmenau.de/unionline/fileadmin/_processed_/0/0/csm_Person_Yury_Prof_Foto_AnLI_Footgrafie__2_.JPG_94f12fbf25.jpg",
+                        large: "https://www.tu-ilmenau.de/unionline/fileadmin/_processed_/0/0/csm_Person_Yury_Prof_Foto_AnLI_Footgrafie__2_.JPG_94f12fbf25.jpg"
+                    },
+                    status: "Hi! i am React JS Junior developer and I am looking for a job",
+                    followed: false
                 }
-        ]
+            ]
         }
-
-
     },
     _callSubscriber(state: stateDataType) {
 
