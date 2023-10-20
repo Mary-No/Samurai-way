@@ -86,7 +86,7 @@
     height: 40px;
     width: 90px;
     border-radius: 15px;
-    border: 1.6px solid rgb(123, 120, 172);
+    border: 1.6px solid rgba(123, 120, 172, 0.67);
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.6px;
@@ -94,8 +94,33 @@
     background-color: white;
 
 }
-.submitBtn:hover{
+.submitBtn:hover, .btnPagination:hover{
+    border: 1.6px solid #895daf;
     background-color: #895daf;
     color: white;
-    border-color: #895daf;
+
 }
+
+.btnPagination{
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 1.6px solid rgba(123, 120, 172, 0.67);
+    background-color: inherit;
+    margin-right: 10px;
+    border-radius: 10px;
+    font-weight: 500;
+    color: rgb(123, 120, 172);
+}
+
+.btnPagination:active, .paginationSelected, .submitBtn:active{
+    border: 1.6px solid rgb(123, 120, 172);
+    background-color: rgb(123, 120, 172);
+    color: white;
+}
+.pagination{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+

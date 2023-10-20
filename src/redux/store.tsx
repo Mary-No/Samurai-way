@@ -19,13 +19,17 @@ export type profilePageType = {
     posts: PostDataType[]
     newPostText: string
 }
-
 export type dialogsPageType = {
     dialogs: dialogsDataType[],
     messages: messagesDataType[],
     newMessageText: string
 }
-export type usersPageType = { items: userType[] }
+export type usersPageType = {
+    items: userType[],
+    pageSize: number,
+    totalUsersCount: number,
+    currentPage: number
+}
 export type userType = {
     name: string,
     id: number,
@@ -41,21 +45,15 @@ export type stateDataType = {
     dialogsPage: dialogsPageType,
     usersPage: usersPageType
 }
-// export type storeType = {
-//     _state: stateDataType,
-//     _callSubscriber: (state: stateDataType) => void,
-//     getState: () => void,
-//     rerenderEntireTree: () => void,
-//     dispatch: (action?: actionType) => void,
-//     subscribe: (observer: any) => void,
-//
-// }
 export type actionType = {
     type: string,
     newText?: string,
     newTextMessage?: string,
     userId?: number,
-    items?: userType[]
+    items?: userType[],
+    pageSize?: number,
+    totalUsersCount?: number,
+    currentPage?: number
 }
 
 
@@ -106,7 +104,10 @@ let store = {
                     status: "Hi! i am React JS Junior developer and I am looking for a job",
                     followed: false
                 }
-            ]
+            ],
+            pageSize: 5,
+            totalUsersCount: 10,
+            currentPage: 1
         }
     },
     _callSubscriber(state: stateDataType) {

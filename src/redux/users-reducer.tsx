@@ -4,14 +4,20 @@ import {actionType, usersPageType, userType} from './store';
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_USERS_COUNT ='SET_USERS_COUNT';
+const SHOW_PREV_PAGE = 'SHOW_PREV_PAGE'
 
 
 let initialState = {
-    items: []
+    items: [],
+    pageSize: 20,
+    totalUsersCount: 0,
+    currentPage: 1
 }
 
 
-const usersReducer = (state: usersPageType = initialState, action: actionType) => {
+const usersReducer = (state: usersPageType = initialState, action: actionType): usersPageType => {
     switch (action.type) {
         case FOLLOW: {
             return {
@@ -35,9 +41,19 @@ const usersReducer = (state: usersPageType = initialState, action: actionType) =
         }
         case SET_USERS: {
             if (action.items) {
-                return {...state, items: [...state.items, ...action.items]}
+                return {...state, items: action.items}
             }
             return state;
+        }
+        case SET_CURRENT_PAGE: {
+            if (action.currentPage) {
+                return {...state, currentPage: action.currentPage}
+            }
+            return state;
+        }
+        case SET_USERS_COUNT: {
+
+            return {...state, totalUsersCount: action?.totalUsersCount ?? state.totalUsersCount }
         }
 
         default:
@@ -48,4 +64,9 @@ const usersReducer = (state: usersPageType = initialState, action: actionType) =
 export const followAC = (userId: number) => ({type: FOLLOW, userId})
 export const unfollowAC = (userId: number) => ({type: UNFOLLOW, userId})
 export const setUsersAC = (items: userType[]) => ({type: SET_USERS, items})
+export const setCurrentPageAC = (currentPage: number) => ({type: SET_CURRENT_PAGE, currentPage})
+export const setTotalUsersCountAC = (totalUsersCount: number) => ({type: SET_USERS_COUNT, totalUsersCount})
+
+
+
 export default usersReducer;
