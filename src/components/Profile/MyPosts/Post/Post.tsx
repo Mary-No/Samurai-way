@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import s from './Post.module.css';
 import Avatar from '../../Avatar/Avatar';
-import like from '../../../../assets/heart.png'
+import like from '../../../../assets/images/heart.png'
 
 
 type PostType = {

@@ -28,7 +28,8 @@ export type usersPageType = {
     items: userType[],
     pageSize: number,
     totalUsersCount: number,
-    currentPage: number
+    currentPage: number,
+    isFetching: boolean
 }
 export type userType = {
     name: string,
@@ -53,7 +54,8 @@ export type actionType = {
     items?: userType[],
     pageSize?: number,
     totalUsersCount?: number,
-    currentPage?: number
+    currentPage?: number,
+    isFetching?: boolean
 }
 
 
@@ -107,7 +109,8 @@ let store = {
             ],
             pageSize: 5,
             totalUsersCount: 10,
-            currentPage: 1
+            currentPage: 1,
+            isFetching: false
         }
     },
     _callSubscriber(state: stateDataType) {
