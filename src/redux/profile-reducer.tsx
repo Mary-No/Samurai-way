@@ -1,13 +1,36 @@
-import {actionType, profilePageType} from './store';
+import {actionType, profilePageType, UserProfileType} from './store';
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const SET_USER_PROFILE = 'SET_USER_PROFILE'
+
 let initialState = {
     posts: [
         {id: 1, message: 'Hi, how are you?', date: '30.08.2020', likeCount: 5},
         {id: 2, message: 'It\'s my first post', date: '12.06.2018', likeCount: 20}
     ],
-    newPostText: ''
+    newPostText: '',
+    profile: {
+        aboutMe: "я круто чувак 1001%",
+        contacts: {
+            facebook: "facebook.com",
+            website: "jh",
+            vk: "vk.com/dimych",
+            twitter: "https://twitter.com/@sdf",
+            instagram: "instagra.com/sds",
+            youtube: "kjh",
+            github: "github.com",
+            mainLink: "kgi"
+        },
+        lookingForAJob: true,
+        lookingForAJobDescription: "не ищу, а дурачусь",
+        fullName: "samurai dimych",
+        userId: 2,
+        photos: {
+            small: "https://social-network.samuraijs.com/activecontent/images/users/2/user-small.jpg?v=0",
+            large: "https://social-network.samuraijs.com/activecontent/images/users/2/user.jpg?v=0"
+        }
+    }
 }
 const profileReducer = (state: profilePageType = initialState, action: actionType) => {
 
@@ -20,9 +43,11 @@ const profileReducer = (state: profilePageType = initialState, action: actionTyp
                 date: date.toLocaleDateString(),
                 likeCount: 0
             }
-            return {...state,
+            return {
+                ...state,
                 posts: [...state.posts, newPost],
-                newPostText: ''};
+                newPostText: ''
+            };
 
         }
         case UPDATE_NEW_POST_TEXT: {
@@ -34,7 +59,10 @@ const profileReducer = (state: profilePageType = initialState, action: actionTyp
             }
             return state
         }
-        default:             //если ни одно условие не проходит
+        case SET_USER_PROFILE: {
+            return {...state, profile: action.profile}
+        }
+        default:
             return state;
     }
 
@@ -44,4 +72,5 @@ export const updateNewPostTextActionCreator = (text: string) => ({
     type: UPDATE_NEW_POST_TEXT,
     newText: text
 })
+export const setUserProfile = (profile: UserProfileType) => ({type: SET_USER_PROFILE, profile})
 export default profileReducer;

@@ -12,16 +12,16 @@ const Sidebar = () => {
                 <NavLink to="/dialogs" className={s.link} activeClassName={s.activeLink}>Messages</NavLink>
             </div>
             <div className={s.section}>
-                <NavLink to="/#" className={s.link}>News</NavLink>
+                <NavLink to="/#" className={s.link} >News</NavLink>
             </div>
             <div className={s.section}>
-                <NavLink to="/#" className={s.link}>Music</NavLink>
+                <NavLink to="/#" className={s.link} >Music</NavLink>
             </div>
             <div className={s.section}>
-                <NavLink to="/#" className={s.link}>Settings</NavLink>
+                <NavLink to="/#" className={s.link} >Settings</NavLink>
             </div>
             <div className={s.section}>
-                <NavLink to="/users" className={s.link}>Find user</NavLink>
+                <NavLink to="/users" className={s.link} activeClassName={s.activeLink}>Find user</NavLink>
             </div>
         </nav>
     )

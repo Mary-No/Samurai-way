@@ -15,9 +15,31 @@ export type messagesDataType = {
     message: string,
     id: number
 }
+export type UserProfileType = {
+    aboutMe: string,
+    contacts: {
+        facebook: string ,
+        website: string ,
+        vk: string ,
+        twitter: string,
+        instagram: string,
+        youtube: string,
+        github: string ,
+        mainLink: string
+    },
+    lookingForAJob: boolean,
+    lookingForAJobDescription: string,
+    fullName: string,
+    userId: number,
+    photos: {
+        small: string,
+        large: string
+    }
+}
 export type profilePageType = {
     posts: PostDataType[]
     newPostText: string
+    profile: UserProfileType
 }
 export type dialogsPageType = {
     dialogs: dialogsDataType[],
@@ -55,7 +77,8 @@ export type actionType = {
     pageSize?: number,
     totalUsersCount?: number,
     currentPage?: number,
-    isFetching?: boolean
+    isFetching?: boolean,
+    profile: UserProfileType
 }
 
 
@@ -66,7 +89,28 @@ let store = {
                 {id: 1, message: 'Hi, how are you?', date: '30.08.2020', likeCount: 5},
                 {id: 2, message: 'It\'s my first post', date: '12.06.2018', likeCount: 20}
             ],
-            newPostText: ''
+            newPostText: '',
+            profile: {
+                aboutMe: "я круто чувак 1001%",
+                contacts: {
+                    facebook: "facebook.com",
+                    website: "kygih",
+                    vk: "vk.com/dimych",
+                    twitter: "https://twitter.com/@sdf",
+                    instagram: "instagra.com/sds",
+                    youtube: "jhgi",
+                    github: "github.com",
+                    mainLink: "jfug"
+                },
+                lookingForAJob: true,
+                lookingForAJobDescription: "не ищу, а дурачусь",
+                fullName: "samurai dimych",
+                userId: 2,
+                photos: {
+                    small: "https://social-network.samuraijs.com/activecontent/images/users/2/user-small.jpg?v=0",
+                    large: "https://social-network.samuraijs.com/activecontent/images/users/2/user.jpg?v=0"
+                }
+            }
         },
 
         dialogsPage: {

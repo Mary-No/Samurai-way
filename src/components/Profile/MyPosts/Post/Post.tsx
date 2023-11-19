@@ -8,6 +8,7 @@ type PostType = {
     message: string
     date: string
     likeCount: number
+    img: string
 
 }
 const Post = (props: PostType) => {
@@ -20,7 +21,7 @@ const Post = (props: PostType) => {
     return (
 
         <div className={s.post}>
-            <Avatar round={true}/>
+            <Avatar round={true} img={props.img}/>
             <div className={s.post_content}>
                 <p className={s.descriptName}>Bars</p>
                 <p className={s.post_date}>{props.date}</p>

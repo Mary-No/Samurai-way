@@ -1,7 +1,7 @@
 import {useRef} from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import {PostDataType} from '../../../redux/store';
+import {PostDataType, UserProfileType} from '../../../redux/store';
 
 
 type MyPostsPropsType = {
@@ -9,11 +9,12 @@ type MyPostsPropsType = {
     newPostText: string
     addPost: () => void
     posts: PostDataType[]
+    profile: UserProfileType
 }
 
 const MyPosts = (props: MyPostsPropsType) => {
 
-    let postElement = props.posts.map(p => <Post key={p.id} message={p.message} date={p.date} likeCount={p.likeCount}/>)
+    let postElement = props.posts.map(p => <Post key={p.id} message={p.message} date={p.date} likeCount={p.likeCount} img={props.profile.photos.small}/>)
 
     let newPostElement = useRef<HTMLTextAreaElement>(null)
 

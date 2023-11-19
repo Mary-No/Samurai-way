@@ -1,8 +1,13 @@
 import s from './ProfileInfo.module.css';
 import React from 'react';
 import Avatar from '../Avatar/Avatar';
+import {UserProfileType} from "../../../redux/store";
 
-const ProfileInfo = (props: any) => {
+type ProfileInfoPropsType = {
+    profile: UserProfileType
+}
+
+const ProfileInfo = (props: ProfileInfoPropsType) => {
 
     return (
 
@@ -11,7 +16,7 @@ const ProfileInfo = (props: any) => {
                  src="https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569__480.jpg"
             />
             <div className={s.personal_info}>
-                <Avatar/>
+                <Avatar img={props.profile.photos.small}/>
                 <div className={s.descript}>
                     <p className={s.descriptName}>Bars</p>
                     <p>Date of Birth: 2 january</p>
