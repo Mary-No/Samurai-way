@@ -2,6 +2,10 @@ import Dialogs from "./Dialogs";
 import {sendMessageCreator, updateNewMessageTextCreator} from "../../redux/dialogs-reducer";
 import {connect} from "react-redux";
 import {stateDataType} from "../../redux/store";
+import {FC, ReactComponentElement} from "react";
+import {compose} from "redux";
+import {AppStateType} from "../../redux/redux-store";
+import {setUserProfile} from "../../redux/profile-reducer";
 
 
 
@@ -21,6 +25,5 @@ let mapDispatchToProps = (dispatch: any) => {
         },
     }
 }
+export default compose<FC>(connect(mapStateToProps, mapDispatchToProps))(Dialogs);
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
-export default DialogsContainer;

@@ -2,13 +2,16 @@ import s from './ProfileInfo.module.css';
 import React from 'react';
 import Avatar from '../Avatar/Avatar';
 import {UserProfileType} from "../../../redux/store";
+import Preloader from "../../Users/Preloader";
 
 type ProfileInfoPropsType = {
     profile: UserProfileType
 }
 
 const ProfileInfo = (props: ProfileInfoPropsType) => {
-
+    if (!props.profile){
+        return <Preloader/>
+    }
     return (
 
         <div className={s.info}>
