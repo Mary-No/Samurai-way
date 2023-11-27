@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Avatar.module.css';
-import photo from '../../../style/photo.jpg'
+import photo from '../../../assets/images/photo.jpg'
 
 type AvatarType = {
     round?: boolean,
