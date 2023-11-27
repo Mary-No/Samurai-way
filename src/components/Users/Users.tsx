@@ -3,6 +3,7 @@ import s from "./Users.module.css";
 import no_avatar from "../../assets/images/no-avatar.jpg";
 import {userType} from "../../redux/store";
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 type UsersFuncPropsType = {
     items: userType[],
@@ -45,13 +46,38 @@ let Users = (props: UsersFuncPropsType) => {
                             </div>
                         </div>
                     </NavLink>
-                    <button
-                        onClick={() => {
-                            u.followed ? props.unfollow(u.id) : props.follow(u.id)
-                        }}
-                        className={`${s.btnFollow}  ${u.followed ? s.followed : s.unfollowed}`}>
-                        {u.followed ? "Follow" : "Unfollow"}
-                    </button>
+                    {
+                        u.followed ?
+                            <button className={`${s.btnFollow}  ${s.unfollowed}`} onClick={() => {
+                                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                                    withCredentials: true,
+                                    headers: {
+                                        'API-KEY': "234c9bba-18f8-4dd2-860f-665d9f96e11c"
+                                    }
+                                }).then(response => {
+                                    if (response.data.resultCode === 0) {
+                                        props.unfollow(u.id)
+                                    }
+                                });
+
+                            }}>Unfollow</button> :
+                            <button className={`${s.btnFollow}  ${s.followed}`} onClick={() => {
+                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+                                    withCredentials: true,
+                                    headers: {
+                                        'API-KEY': "234c9bba-18f8-4dd2-860f-665d9f96e11c"
+                                    }
+
+                                }).then(response => {
+                                    if (response.data.resultCode === 0) {
+                                        props.follow(u.id)
+                                    }
+                                });
+
+                            }}>Follow</button>
+
+
+                    }
                 </div>
             )
         }
