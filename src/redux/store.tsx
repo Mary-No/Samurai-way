@@ -48,7 +48,8 @@ export type usersPageType = {
     pageSize: number,
     totalUsersCount: number,
     currentPage: number,
-    isFetching: boolean
+    isFetching: boolean,
+    followingInProgress: Array<number>
 }
 export type userType = {
     name: string,
@@ -75,12 +76,13 @@ export type actionType = {
     type: string,
     newText?: string,
     newTextMessage?: string,
-    userId?: number,
+    userId: number,
     items?: userType[],
     pageSize?: number,
     totalUsersCount?: number,
     currentPage?: number,
     isFetching?: boolean,
     profile: UserProfileType,
-    data: authType
+    data: authType,
+    followingInProgress: Array<number>
 }
