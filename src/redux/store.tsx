@@ -63,8 +63,7 @@ export type userType = {
 }
 export type authType = {
     login: string,
-    isAuth: boolean,
-    authPhoto: string,
+    isAuth: boolean
 }
 export type stateDataType = {
     profilePage: profilePageType,

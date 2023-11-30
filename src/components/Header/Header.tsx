@@ -6,10 +6,8 @@ import loginPerson from './../../assets/images/login-person.svg'
 type HeaderPropsType = {
     login: string
     isAuth: boolean
-    authPhoto: string
 }
-const Header = (props:HeaderPropsType) => {
-    let avatar = props.authPhoto
+const Header = (props: HeaderPropsType) => {
     return (
         <header className={s.header}>
             <div className={s.header_logo}>
@@ -24,13 +22,12 @@ const Header = (props:HeaderPropsType) => {
                 {props.isAuth ?
                     <div className={s.header_login_auth}>
                         <p>{props.login}</p>
-                        <img src={props.authPhoto} alt="authPhoto"/>
                     </div>
                     :
-                <NavLink className={s.header_login_unauth} to={'/login'}>
-                    <p>Login</p>
-                    <img className={s.login_unauth_img} src={loginPerson} alt="loginPerson"/>
-                </NavLink>
+                    <NavLink className={s.header_login_unauth} to={'/login'}>
+                        <p>Login</p>
+                        <img className={s.login_unauth_img} src={loginPerson} alt="loginPerson"/>
+                    </NavLink>
                 }
 
             </div>

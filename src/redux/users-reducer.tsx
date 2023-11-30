@@ -1,5 +1,5 @@
 import {actionType, usersPageType, userType} from './store';
-import {usersApi} from "../api/api";
+import {usersAPI} from "../api/api";
 
 
 const FOLLOW = 'FOLLOW';
@@ -101,7 +101,7 @@ export const toggleIsFollowingProgress = (isFetching: boolean, userId: number) =
 
 export const getUsersThunkCreator = (currentPage: number, pageSize: number) => (dispatch: any) => {
     dispatch(toggleIsFetching(true))
-    usersApi.getUsers(currentPage, pageSize)
+    usersAPI.getUsers(currentPage, pageSize)
         .then(data => {
             dispatch(toggleIsFetching(false))
             dispatch(setCurrentPage(currentPage))
@@ -111,7 +111,7 @@ export const getUsersThunkCreator = (currentPage: number, pageSize: number) => (
 }
 export const follow = (userId: number) => (dispatch: any) => {
     dispatch(toggleIsFollowingProgress(true, userId))
-    usersApi.followUser(userId)
+    usersAPI.followUser(userId)
         .then(response => {
             if (response.data.resultCode === 0) {
                 dispatch(followSuccess(userId))
@@ -121,7 +121,7 @@ export const follow = (userId: number) => (dispatch: any) => {
 }
 export const unfollow = (userId: number) => (dispatch: any) => {
     dispatch(toggleIsFollowingProgress(true, userId))
-    usersApi.unfollowUser(userId)
+    usersAPI.unfollowUser(userId)
         .then(response => {
             if (response.data.resultCode === 0) {
                 dispatch(unfollowSuccess(userId))
