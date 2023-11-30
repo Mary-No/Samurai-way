@@ -1,16 +1,15 @@
 import {userType} from "../../redux/store";
 import {
-    follow, getUsersThunkCreator,
+    follow,
+    getUsersThunkCreator,
     setCurrentPage,
-    setTotalUsersCount,
-    setUsers, toggleIsFetching, toggleIsFollowingProgress,
+    toggleIsFollowingProgress,
     unfollow
 } from "../../redux/users-reducer";
 import {AppStateType} from "../../redux/redux-store";
 import React, {Component, FC} from "react";
 import Users from "./Users";
 import Preloader from "./Preloader";
-import {getUsers} from "../../api/api";
 import {compose} from "redux";
 import {connect} from "react-redux";
 
@@ -27,11 +26,7 @@ type MapStateType = {
 type MapDispatchType = {
     follow: (userId: number) => void,
     unfollow: (userId: number) => void,
-    setUsers: (items: userType[]) => void,
     setCurrentPage: (currentPage: number) => void,
-    setTotalUsersCount: (totalCount: number) => void
-    toggleIsFetching: (isFetching: boolean) => void
-    toggleIsFollowingProgress: (isFetching: boolean, userId:number) => void
     getUsersThunkCreator: (currentPage: number, pageSize: number) => void
 }
 
@@ -54,12 +49,8 @@ class UsersContainer extends Component<PropsUserType> {
     }
 
     onPageChanged = (pageNumber: number) => {
-        this.props.toggleIsFetching(true)
-        this.props.setCurrentPage(pageNumber);
-        getUsers(pageNumber, this.props.pageSize).then(data => {
-            this.props.toggleIsFetching(false)
-            this.props.setUsers(data.items)
-        })
+
+        this.props.getUsersThunkCreator(pageNumber, this.props.pageSize);
     }
 
     render() {
@@ -80,7 +71,6 @@ class UsersContainer extends Component<PropsUserType> {
                 unfollow={this.props.unfollow}
                 follow={this.props.follow}
                 onPageChanged={this.onPageChanged}
-                toggleIsFollowingProgress = {this.props.toggleIsFollowingProgress}
                 followingInProgress = {this.props.followingInProgress}
             />
         </>
@@ -92,10 +82,6 @@ class UsersContainer extends Component<PropsUserType> {
 export default compose<FC>(connect<MapStateType, MapDispatchType, {}, AppStateType>(mapStateToProps, {
     follow,
     unfollow,
-    setUsers,
     setCurrentPage,
-    setTotalUsersCount,
-    toggleIsFetching,
-    toggleIsFollowingProgress,
     getUsersThunkCreator
 }))(UsersContainer);
