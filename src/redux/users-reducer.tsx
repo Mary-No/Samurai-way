@@ -1,4 +1,5 @@
 import {actionType, usersPageType, userType} from './store';
+import {getUsers} from "../api/api";
 
 
 const FOLLOW = 'FOLLOW';
@@ -98,7 +99,14 @@ export const toggleIsFollowingProgress = (isFetching: boolean, userId: number) =
     userId
 }) as const
 
-
+export const getUsersThunkCreator = (currentPage: number, pageSize: number) => (dispatch:any) => {
+    dispatch(toggleIsFetching(true))
+    getUsers(currentPage, pageSize).then(data => {
+        dispatch(toggleIsFetching(false))
+        dispatch(setUsers(data.items))
+        dispatch(setTotalUsersCount(data.totalCount))
+    })
+}
 
 
 export default usersReducer;

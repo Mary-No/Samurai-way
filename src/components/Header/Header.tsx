@@ -9,6 +9,7 @@ type HeaderPropsType = {
     authPhoto: string
 }
 const Header = (props:HeaderPropsType) => {
+    let avatar = props.authPhoto
     return (
         <header className={s.header}>
             <div className={s.header_logo}>
