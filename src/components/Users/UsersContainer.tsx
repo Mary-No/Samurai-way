@@ -3,7 +3,6 @@ import {
     follow,
     getUsersThunkCreator,
     setCurrentPage,
-    toggleIsFollowingProgress,
     unfollow
 } from "../../redux/users-reducer";
 import {AppStateType} from "../../redux/redux-store";
@@ -12,6 +11,7 @@ import Users from "./Users";
 import Preloader from "./Preloader";
 import {compose} from "redux";
 import {connect} from "react-redux";
+import {WithAuthRedirect} from "../../hoc/WithAuthRedirect";
 
 
 type MapStateType = {
@@ -78,10 +78,11 @@ class UsersContainer extends Component<PropsUserType> {
 
 
 }
+let withRedirect = WithAuthRedirect(UsersContainer)
 
 export default compose<FC>(connect<MapStateType, MapDispatchType, {}, AppStateType>(mapStateToProps, {
     follow,
     unfollow,
     setCurrentPage,
     getUsersThunkCreator
-}))(UsersContainer);
+}))(withRedirect);

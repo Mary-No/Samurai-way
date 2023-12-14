@@ -6,7 +6,7 @@ const Sidebar = () => {
     return (
         <nav className={s.sidebar}>
             <div className={s.section}>
-                <NavLink to="/profile" className={s.link} activeClassName={s.activeLink}>Profile</NavLink>
+                <NavLink to="/profile/:userId" className={s.link} activeClassName={s.activeLink}>Profile</NavLink>
             </div>
             <div className={s.section}>
                 <NavLink to="/dialogs" className={s.link} activeClassName={s.activeLink}>Messages</NavLink>

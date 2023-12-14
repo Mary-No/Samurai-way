@@ -1,20 +1,19 @@
 import Dialogs from "./Dialogs";
 import {sendMessageCreator, updateNewMessageTextCreator} from "../../redux/dialogs-reducer";
 import {connect} from "react-redux";
-import {stateDataType} from "../../redux/store";
-import {FC, ReactComponentElement} from "react";
+import {FC} from "react";
 import {compose} from "redux";
 import {AppStateType} from "../../redux/redux-store";
-import {setUserProfile} from "../../redux/profile-reducer";
+import {WithAuthRedirect} from "../../hoc/WithAuthRedirect";
 
 
 
-let mapStateToProps = (state: stateDataType) => {
+let mapStateToProps = (state: AppStateType) => {
     return {
-        dialogsPage: state.dialogsPage
+        dialogsPage: state.dialogsPage,
     }
 }
-//:(action?: actionType) => void
+
 let mapDispatchToProps = (dispatch: any) => {
     return {
         updateNewMessageBody: (newText: string) => {
@@ -25,5 +24,8 @@ let mapDispatchToProps = (dispatch: any) => {
         },
     }
 }
-export default compose<FC>(connect(mapStateToProps, mapDispatchToProps))(Dialogs);
+
+let AuthRedirectComponent = WithAuthRedirect(Dialogs)
+
+export default compose<FC>(connect(mapStateToProps, mapDispatchToProps))(AuthRedirectComponent);
 

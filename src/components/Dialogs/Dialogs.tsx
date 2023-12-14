@@ -10,6 +10,7 @@ type DialogsPropsType = {
     sendMessage: () => void
     dialogsPage: dialogsPageType
 
+
 }
 
 const Dialogs = (props: DialogsPropsType) => {
@@ -27,6 +28,8 @@ const Dialogs = (props: DialogsPropsType) => {
     let onSendMessageClick = () => {
         props.sendMessage();
     }
+
+
 
     return (
         <div className={s.dialogs}>

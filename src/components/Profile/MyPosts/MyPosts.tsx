@@ -14,23 +14,18 @@ type MyPostsPropsType = {
 
 const MyPosts = (props: MyPostsPropsType) => {
 
-    let postElement = props.posts.map(p => <Post key={p.id} message={p.message} date={p.date} likeCount={p.likeCount} img={props.profile.photos.small}/>)
+    let postElement = props.posts.map(p =>
+        <Post fullname={props.profile.fullName} key={p.id} message={p.message} date={p.date} likeCount={p.likeCount} img={props.profile.photos.small}/>
+    )
 
     let newPostElement = useRef<HTMLTextAreaElement>(null)
 
-    let onAddPost = () => {
-        props.addPost();
-        // if (newPostElement.current !== null) {
-        //     props.dispatch(addPostActionCreator())
-        // }
+    let onAddPost = () => props.addPost();
 
-    }
     let onPostChange = () => {
         if (newPostElement.current !== null) {
             let text = newPostElement.current.value
             props.updateNewPostText(text)
-            // let action = updateNewPostTextActionCreator(text);
-            // props.dispatch(action)
         }
     }
     return (

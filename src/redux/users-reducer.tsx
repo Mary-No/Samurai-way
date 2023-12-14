@@ -10,17 +10,6 @@ const SET_USERS_COUNT = 'SET_USERS_COUNT';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS'
 
-// type Follow = ReturnType<typeof follow>
-// type Unfollow = ReturnType<typeof unfollow>
-// type SetUsers = ReturnType<typeof setUsers>
-// type SetCurrentPage = ReturnType<typeof setCurrentPage>
-// type SetTotalUsersCount = ReturnType<typeof setTotalUsersCount>
-// type ToggleIsFetching = ReturnType<typeof toggleIsFetching>
-// type ToggleIsFollowingProgress = ReturnType<typeof toggleIsFollowingProgress>
-//
-//
-// export type UsersReducerActions = Follow | Unfollow | SetUsers | SetCurrentPage | SetTotalUsersCount | ToggleIsFetching | ToggleIsFollowingProgress
-
 
 let initialState = {
     items: [],

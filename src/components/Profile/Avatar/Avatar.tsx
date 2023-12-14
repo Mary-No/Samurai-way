@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './Avatar.module.css';
-import photo from '../../../assets/images/photo.jpg'
 
 type AvatarType = {
     round?: boolean,
@@ -9,9 +8,8 @@ type AvatarType = {
 const Avatar = (props: AvatarType) => {
     const avatarClassName = `${s.avatar} ${props.round ? s.round : s.square}`
     return (
-
         <img className={avatarClassName} alt="avatar"
-             src={props.img && photo}
+             src={props.img}
         />
     )
 }

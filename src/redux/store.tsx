@@ -65,11 +65,6 @@ export type authType = {
     login: string,
     isAuth: boolean
 }
-export type stateDataType = {
-    profilePage: profilePageType,
-    dialogsPage: dialogsPageType,
-    usersPage: usersPageType
-}
 export type actionType = {
     authPhoto: string,
     type: string,
