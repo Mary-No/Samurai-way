@@ -78,11 +78,11 @@ class UsersContainer extends Component<PropsUserType> {
 
 
 }
-let withRedirect = WithAuthRedirect(UsersContainer)
+
 
 export default compose<FC>(connect<MapStateType, MapDispatchType, {}, AppStateType>(mapStateToProps, {
     follow,
     unfollow,
     setCurrentPage,
     getUsersThunkCreator
-}))(withRedirect);
+}), WithAuthRedirect) (UsersContainer);

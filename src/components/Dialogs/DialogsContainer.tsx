@@ -25,7 +25,6 @@ let mapDispatchToProps = (dispatch: any) => {
     }
 }
 
-let AuthRedirectComponent = WithAuthRedirect(Dialogs)
 
-export default compose<FC>(connect(mapStateToProps, mapDispatchToProps))(AuthRedirectComponent);
+export default compose<FC>(connect(mapStateToProps, mapDispatchToProps))(WithAuthRedirect(Dialogs));
 
