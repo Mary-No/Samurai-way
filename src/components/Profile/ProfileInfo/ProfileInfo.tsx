@@ -3,9 +3,10 @@ import React from 'react';
 import Avatar from '../Avatar/Avatar';
 import {UserProfileType} from "../../../redux/store";
 import Preloader from "../../Users/Preloader";
-import github from "../../../assets/images/contacts/gh.svg"
-import facebook from "../../../assets/images/contacts/fb.svg"
-import vk from "../../../assets/images/contacts/vk.svg"
+import github from "../../../assets/images/contacts/gh.png"
+import facebook from "../../../assets/images/contacts/fb.png"
+import vk from "../../../assets/images/contacts/vk.png"
+import ProfileStatus from "../ProfileStatus/ProfileStatus";
 
 type ProfileInfoPropsType = {
     profile: UserProfileType
@@ -23,9 +24,7 @@ const ProfileInfo = (props: ProfileInfoPropsType) => {
                 <Avatar img={props.profile.photos.large}/>
                 <div className={s.descript}>
                     <p className={s.descriptName}>{props.profile.fullName}</p>
-                    <p>{props.profile.aboutMe}</p>
-
-
+                    <ProfileStatus status={props.profile.aboutMe}/>
                 </div>
             </div>
             <div className={s.contacts}>

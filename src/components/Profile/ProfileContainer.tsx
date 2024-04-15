@@ -48,4 +48,4 @@ let mapStateToProps = (state: AppStateType) => {
     }
 }
 
-export default compose<FC>(connect<MapStateType, MapDispatchType, {}, AppStateType>(mapStateToProps, {setUserProfile}), withRouter, WithAuthRedirect)(ProfileContainer);
+export default compose<any, any,any,any>(connect<MapStateType, MapDispatchType, {}, AppStateType>(mapStateToProps, {setUserProfile}), withRouter, WithAuthRedirect)(ProfileContainer);

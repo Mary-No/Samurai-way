@@ -2,6 +2,7 @@ import React from "react";
 import s from "./Header.module.css";
 import {NavLink} from "react-router-dom";
 import loginPerson from './../../assets/images/login-person.svg'
+import logo from './../../assets/images/Android_Oreo_logo.png'
 
 type HeaderPropsType = {
     login: string
@@ -14,7 +15,7 @@ const Header = (props: HeaderPropsType) => {
                 <img
                     className={s.logo}
                     alt="logo"
-                    src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Android_O_Preview_Logo.png"
+                    src={logo}
                 />
                 <h1>DAROV</h1>
             </div>

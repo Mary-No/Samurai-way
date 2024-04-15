@@ -1,10 +1,8 @@
 import Dialogs from "./Dialogs";
 import {sendMessageCreator, updateNewMessageTextCreator} from "../../redux/dialogs-reducer";
 import {connect} from "react-redux";
-import {FC} from "react";
 import {compose} from "redux";
 import {AppStateType} from "../../redux/redux-store";
-import {WithAuthRedirect} from "../../hoc/WithAuthRedirect";
 
 
 
@@ -26,5 +24,5 @@ let mapDispatchToProps = (dispatch: any) => {
 }
 
 
-export default compose<FC>(connect(mapStateToProps, mapDispatchToProps))(WithAuthRedirect(Dialogs));
+export default compose<any>(connect(mapStateToProps, mapDispatchToProps))(Dialogs);
 

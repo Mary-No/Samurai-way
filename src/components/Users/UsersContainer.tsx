@@ -80,7 +80,7 @@ class UsersContainer extends Component<PropsUserType> {
 }
 
 
-export default compose<FC>(connect<MapStateType, MapDispatchType, {}, AppStateType>(mapStateToProps, {
+export default compose<any>(connect<MapStateType, MapDispatchType, {}, AppStateType>(mapStateToProps, {
     follow,
     unfollow,
     setCurrentPage,
