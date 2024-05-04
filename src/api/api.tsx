@@ -1,4 +1,5 @@
 import axios from "axios";
+import {profileAPI} from "./profileAPI";
 
 const instance = axios.create({
     withCredentials: true,
@@ -19,7 +20,8 @@ export const usersAPI = {
         return instance.post(`/follow/${id}`)
     },
     getProfile(userId: string){
-        return instance.get(`/profile/${userId}`)
+        console.warn('Obsolete method. Please use profileAPI object')
+        return profileAPI.getProfile(userId)
     }
 
 }

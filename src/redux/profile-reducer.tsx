@@ -1,9 +1,11 @@
 import {actionType, profilePageType, UserProfileType} from './store';
 import {usersAPI} from "../api/api";
+import {profileAPI} from "../api/profileAPI";
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
+const SET_STATUS = 'SET_STATUS'
 
 let initialState = {
     posts: [
@@ -31,7 +33,8 @@ let initialState = {
             small: "https://social-network.samuraijs.com/activecontent/images/users/2/user-small.jpg?v=0",
             large: "https://social-network.samuraijs.com/activecontent/images/users/2/user.jpg?v=0"
         }
-    }
+    },
+    status: ''
 }
 const profileReducer = (state: profilePageType = initialState, action: actionType) => {
 
@@ -63,6 +66,9 @@ const profileReducer = (state: profilePageType = initialState, action: actionTyp
         case SET_USER_PROFILE: {
             return {...state, profile: action.profile}
         }
+        case SET_STATUS: {
+            return {...state, status: action.status}
+        }
         default:
             return state;
     }
@@ -74,10 +80,27 @@ export const updateNewPostTextActionCreator = (text: string) => ({
     newText: text
 })
 export const setUserProfile = (profile: UserProfileType) => ({type: SET_USER_PROFILE, profile})
+export const setStatus = (status: string) => ({type: SET_STATUS, status})
+
 export const getUserProfile = (userId:string) => (dispatch:any) =>{
     usersAPI.getProfile(userId)
         .then(response => {
             dispatch(setUserProfile(response.data))
+        })
+}
+export const getStatus = (userId:string) => (dispatch:any) =>{
+    profileAPI.getStatus(userId)
+        .then(response => {
+            dispatch(setStatus(response.data))
+        })
+}
+export const updateStatus = (status:string) => (dispatch:any) =>{
+    profileAPI.updateStatus(status)
+        .then(response => {
+            if(response.data.resultCode === 0) {
+                dispatch(setStatus(status))
+            }
+
         })
 }
 

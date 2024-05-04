@@ -37,6 +37,7 @@ export type profilePageType = {
     posts: PostDataType[]
     newPostText: string
     profile: UserProfileType
+    status: string
 }
 export type dialogsPageType = {
     dialogs: dialogsDataType[],
@@ -79,4 +80,5 @@ export type actionType = {
     profile: UserProfileType,
     data: authType,
     followingInProgress: Array<number>
+    status: string
 }

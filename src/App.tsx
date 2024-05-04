@@ -9,7 +9,6 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginPage from "./components/Login/Login";
 
 function App() {
-
     return (
         <div className="app-wrapper">
             <HeaderContainer/>
